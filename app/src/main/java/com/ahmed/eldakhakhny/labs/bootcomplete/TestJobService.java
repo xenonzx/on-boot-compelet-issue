@@ -14,6 +14,8 @@ import androidx.core.app.NotificationCompat;
 
 import com.ahmed.eldakhakhny.softexpert.bootcomplete.R;
 
+import io.flutter.embedding.android.FlutterActivity;
+
 import static androidx.core.app.NotificationCompat.*;
 
 public class TestJobService extends JobService {
@@ -31,7 +33,7 @@ public class TestJobService extends JobService {
     }
 
     private void showNotification() {
-        Intent notificationIntent = new Intent(this, MainActivity.class);
+        Intent notificationIntent = FlutterActivity.createDefaultIntent(getBaseContext());
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
                 notificationIntent, 0);
 
