@@ -17,6 +17,7 @@ public class AlarmRebootReceiver extends BroadcastReceiver {
 
         // 2 starting flutter activity from broadcast receiver on api 24
         // the  flutter code is added as a dependency to the android project
-        oContext.startActivity(FlutterActivity.createDefaultIntent(oContext));
+        Util.scheduleJob(oContext);
+
     }
 }
