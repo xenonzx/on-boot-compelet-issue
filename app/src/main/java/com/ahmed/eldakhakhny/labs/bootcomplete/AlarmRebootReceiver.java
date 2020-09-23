@@ -11,7 +11,7 @@ public class AlarmRebootReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context oContext, Intent intent) {
-        Log.d("AlarmRebootReceiver", "Event Received");
+        Log.e("AlarmRebootReceiver", "Event Received");
         // 1 you can start a new activity on api 24 devices
         //oContext.startActivity(new Intent(oContext,MainActivity.class));
 
