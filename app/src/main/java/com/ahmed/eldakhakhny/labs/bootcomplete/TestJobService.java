@@ -16,7 +16,6 @@ import io.flutter.embedding.android.FlutterActivity;
 public class TestJobService extends JobService {
     private static final String TAG = "SyncService";
     public static final String CHANNEL_DAKHAKHNY = "channed_dakhakhny";
-
     private String CHANNEL_ID ="dakhakhny ID";
     @Override
     public boolean onStartJob(JobParameters params) {
@@ -39,6 +38,11 @@ public class TestJobService extends JobService {
     public void onCreate() {
         Log.e("TestJobService","onCreate");
         super.onCreate();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
