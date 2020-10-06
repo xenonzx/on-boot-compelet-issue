@@ -9,8 +9,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
+
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
+
 import com.ahmed.eldakhakhny.softexpert.bootcomplete.R;
+
 import io.flutter.embedding.android.FlutterActivity;
 
 public class TestJobService extends JobService {
@@ -19,11 +23,10 @@ public class TestJobService extends JobService {
     private String CHANNEL_ID ="dakhakhny ID";
     @Override
     public boolean onStartJob(JobParameters params) {
-        Log.e("TestJobService","onStartJob");
-        //startFlutterActivity();
-        createNotificationChannel();
-        showNotification();
-        Log.e("TestJobService","your code shall go here");
+        Log.v("TestJobService","onStartJob");
+
+        Intent serviceIntent = new Intent(this, TestForegroundService.class);
+        ContextCompat.startForegroundService(this, serviceIntent);
         // make sure that you return false
         return false;
     }
@@ -36,18 +39,19 @@ public class TestJobService extends JobService {
 
     @Override
     public void onCreate() {
-        Log.e("TestJobService","onCreate");
+        Log.v("TestJobService","onCreate");
         super.onCreate();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.v("TestJobService","onStartCommand");
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
-        Log.e("TestJobService","onUnbind");
+        Log.v("TestJobService","onUnbind");
         return super.onUnbind(intent);
 
     }
@@ -55,18 +59,18 @@ public class TestJobService extends JobService {
     @Override
     public void onRebind(Intent intent) {
         super.onRebind(intent);
-        Log.e("TestJobService","onRebind");
+        Log.v("TestJobService","onRebind");
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.e("TestJobService","onDestroy");
+        Log.v("TestJobService","onDestroy");
     }
 
     @Override
     public boolean onStopJob(JobParameters params) {
-        Log.e("TestJobService","onStopJob");
+        Log.v("TestJobService","onStopJob");
         return true;
     }
 

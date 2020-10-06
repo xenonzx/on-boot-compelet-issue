@@ -7,6 +7,7 @@ import android.os.Handler
 import android.os.IBinder
 import android.preference.PreferenceManager
 import android.util.Log
+import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import com.ahmed.eldakhakhny.softexpert.bootcomplete.R
 
@@ -39,9 +40,10 @@ class TestForegroundService: Service() {
         return START_NOT_STICKY
     }
 
+    //TODO replace ur work here
     private fun doSomeBackgroundWork() {
-        // should read and save steps into shared prefs
-        var steps = 0
+        // your steps counting work shall go here
+        val steps =  PreferenceManager.getDefaultSharedPreferences(applicationContext).getInt(STEPS,0)
         simulateStepsCounting(steps)
     }
 

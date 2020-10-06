@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     tools:context="com.ahmed.eldakhakhny.labs.bootcomplete.MainActivity">
 
-    <Button
-        android:id="@+id/startButton"
+    <TextView
+        android:id="@+id/stepsTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="start foreground service"

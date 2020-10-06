@@ -14,19 +14,18 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        startButton.setOnClickListener { v ->
-            val serviceIntent = Intent(this, TestForegroundService::class.java)
-            ContextCompat.startForegroundService(this, serviceIntent)
-        }
-
-        showStepsToast()
+        initUI()
+        startForegroundService()
     }
 
-    private fun showStepsToast() {
+    private fun startForegroundService() {
+        val serviceIntent = Intent(this, TestForegroundService::class.java)
+        ContextCompat.startForegroundService(this, serviceIntent)
+    }
+    private fun initUI(){
         val steps = PreferenceManager.getDefaultSharedPreferences(applicationContext)
             .getInt(TestForegroundService.STEPS, 0);
-        Toast.makeText(this, "number of steps $steps", Toast.LENGTH_LONG).show()
+        stepsTV.text = "steps $steps"
     }
 
 }
